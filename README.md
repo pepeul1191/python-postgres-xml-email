@@ -1,11 +1,10 @@
 # Python Postgres a XML
 
-En caso de usar el servicio en python:
+Instalar y activar el ambiente virtual:
 
-    $ sudo pip install virtualenv
-    $ virtualenv -p python3 env
-    $ cd env
-    $ source bin/activate
+    $ sudo apt install python3-virtualenv python3-venv
+    $ python3 -m venv ./env
+    $ source env/bin/activate
 
 Arrancar aplicación con servidor Werkzeug:
 
@@ -22,6 +21,6 @@ En Windows:
 Fuentes:
 
 + https://programwithus.com/learn-to-code/Pip-and-virtualenv-on-Windows/
-+ https://github.com/pepeul1191/python-bottle-cherry-boilerplate
-+ https://github.com/pepeul1191/python-accesos-v2
-+ https://bottlepy.org/docs/dev/stpl.html
++ https://postgres-py.readthedocs.io/en/latest/
++ https://stackoverflow.com/questions/70583980/i-am-unable-to-create-a-new-virtualenv-in-ubuntu
++ https://postgres-py.readthedocs.io/en/latest/
