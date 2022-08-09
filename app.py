@@ -23,4 +23,4 @@ for child in root:
     ):
       tmp.attrib["whastapp"] = worker.phone
 
-tree.write("output.xml")
+tree.write("output.xml", encoding='utf8', method='xml')

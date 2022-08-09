@@ -26,3 +26,4 @@ Fuentes:
 + https://postgres-py.readthedocs.io/en/latest/
 + https://www.geeksforgeeks.org/modify-xml-files-with-python/
 + https://docs.python.org/3/library/xml.etree.elementtree.html
++ https://stackoverflow.com/questions/15356641/how-to-write-xml-declaration-using-xml-etree-elementtree
