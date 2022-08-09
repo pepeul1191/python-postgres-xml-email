@@ -24,3 +24,5 @@ Fuentes:
 + https://postgres-py.readthedocs.io/en/latest/
 + https://stackoverflow.com/questions/70583980/i-am-unable-to-create-a-new-virtualenv-in-ubuntu
 + https://postgres-py.readthedocs.io/en/latest/
++ https://www.geeksforgeeks.org/modify-xml-files-with-python/
++ https://docs.python.org/3/library/xml.etree.elementtree.html

@@ -7,3 +7,5 @@ env
 .vscode
 data/*
 .env
+tmp
+output.xml
