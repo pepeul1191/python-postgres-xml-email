@@ -68,12 +68,7 @@ send_to = "pepe.valdivia.caballero@gmail.com"
 password = os.getenv("MAIL_PASS")
 context = ssl.create_default_context()
 try:
-  server = smtplib.SMTP(smtp_server,port)
-  server.ehlo() # Can be omitted
-  server.starttls(context=context) # Secure the connection
-  server.ehlo() # Can be omitted
-  server.login(sender_email, password)
-  # Send email here
+  # header + body + attachment
   msg = MIMEMultipart()
   msg['From'] = sender_email
   msg['To'] = send_to
@@ -86,11 +81,17 @@ try:
   msg.attach(MIMEText(body_mail, 'html'))
   with open("tmp/" + str(timestamp) + ".zip", "rb") as fil:
     part = MIMEApplication(
-        fil.read(),
-        Name=str(timestamp) + ".zip"
+      fil.read(),
+      Name=str(timestamp) + ".zip"
     )
     part['Content-Disposition'] = 'attachment; filename="%s"' % str(timestamp) + ".zip"
     msg.attach(part)
+  # smtp server connection
+  server = smtplib.SMTP(smtp_server,port)
+  server.ehlo() 
+  server.starttls(context=context)
+  server.ehlo()
+  server.login(sender_email, password)
   server.sendmail(sender_email, send_to, msg.as_string())
 except Exception as e:
   print(e)
