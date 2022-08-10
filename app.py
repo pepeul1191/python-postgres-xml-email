@@ -22,6 +22,8 @@ def zipdir(path, ziph):
         os.path.join(path, '..'))
       )
 
+# env variables
+load_dotenv()
 # ids
 i = 0
 ids = ""
@@ -30,7 +32,14 @@ while i < 5:
   ids = ids + "," + str(id)
   i = i + 1
 # db
-db = Postgres(url="postgres://root:123@127.0.0.1:5433/tickets?sslmode=disable")
+url="postgres://{user}:{password}@{host}:{port}/{db_name}?sslmode=disable"
+db = Postgres(url=url.format(
+  user=os.getenv("DB_USER"),
+  password=os.getenv("DB_PASS"),
+  host=os.getenv("DB_HOST"),
+  port=os.getenv("DB_PORT"),
+  db_name=os.getenv("DB_NAME"),
+))
 query = "SELECT * FROM workers WHERE id IN (" +  ids[1:] + ");"
 workers = db.all(query)
 # folder
@@ -60,7 +69,6 @@ for worker in workers:
 with zipfile.ZipFile("tmp/" + str(timestamp) + ".zip", "w", zipfile.ZIP_DEFLATED) as zipf:
   zipdir("tmp/" + str(timestamp) + "/", zipf)
 # email
-load_dotenv()
 smtp_server = os.getenv("MAIL_HOST")
 port = os.getenv("PORT")
 sender_email = os.getenv("MAIL_USER")

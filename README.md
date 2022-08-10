@@ -23,6 +23,12 @@ En el archivo <b>.env</b> colocar los siguientes valores:
     MAIL_PASS=""
     MAIL_HOST="smtp.gmail.com"
     MAIL_PORT=587
+    DB_USER="root"
+    DB_PASS="123"
+    DB_HOST="127.0.0.1"
+    DB_PORT=5433
+    DB_NAME="tickets"
+    DB="postgres://root:123@127.0.0.1:5433/tickets?sslmode=disable"
 
 ## Servidor de Base de Datos con Docker
 
