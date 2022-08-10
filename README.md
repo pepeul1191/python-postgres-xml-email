@@ -10,6 +10,7 @@ Arrancar aplicación con servidor Werkzeug:
 
     $ cd <<carpeta-proyecto>>
     $ pip install -r requirements.txt
+    $ mkdir tmp
     $ python app.py
 
 En Windows:
