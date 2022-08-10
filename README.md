@@ -16,6 +16,35 @@ En Windows:
 
     > env\Scripts\activate.bat
 
+En el archivo <b>.env</b> colocar los siguientes valores:
+
+    MAIL_SENDER="info@correo.pe"
+    MAIL_USER="correo@gmail.com"
+    MAIL_PASS=""
+    MAIL_HOST="smtp.gmail.com"
+    MAIL_PORT=587
+
+## Servidor de Base de Datos con Docker
+
+    $ docker compose up
+
+## Migraciones
+
+En el archivo <b>.env</b> colocar el siguiente string de conexión:
+
+    DB="postgres://root:123@127.0.0.1:5433/tickets?sslmode=disable"
+
+Migraciones con DBMATE - postgres/tickets:
+
+    $ dbmate -d "db/migrations" -e "DB" new <<nombre_de_migracion>>
+    $ dbmate -d "db/migrations" -e "DB" up
+    $ dbmate -d "db/migrations" -e "DB" rollback
+    $ dbmate -d "db/migrations" -e "DB" dump
+
+Dump de la base de datos usando Postgres Client 14
+
+    $ pg_dump -h 127.0.0.1 -p 5433 -Fc -U root tickets > db/tickets.dump
+
 ---
 
 Fuentes:
@@ -31,3 +60,4 @@ Fuentes:
 + https://stackoverflow.com/questions/1855095/how-to-create-a-zip-archive-of-a-directory
 + https://stackoverflow.com/questions/40216311/reading-in-environment-variables-from-an-environment-file
 + https://stackoverflow.com/questions/3362600/how-to-send-email-attachments
++ https://stackoverflow.com/questions/29648309/pg-dump-postgres-database-from-remote-server-when-port-5432-is-blocked
