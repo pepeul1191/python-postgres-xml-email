@@ -23,6 +23,7 @@ En el archivo <b>.env</b> colocar los siguientes valores:
     MAIL_PASS=""
     MAIL_HOST="smtp.gmail.com"
     MAIL_PORT=587
+    MAIL_TO="pepe.valdivia.caballero@gmail.com"
     DB_USER="root"
     DB_PASS="123"
     DB_HOST="127.0.0.1"

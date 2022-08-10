@@ -72,7 +72,7 @@ with zipfile.ZipFile("tmp/" + str(timestamp) + ".zip", "w", zipfile.ZIP_DEFLATED
 smtp_server = os.getenv("MAIL_HOST")
 port = os.getenv("PORT")
 sender_email = os.getenv("MAIL_USER")
-send_to = "pepe.valdivia.caballero@gmail.com"
+send_to = os.getenv("MAIL_TO")
 password = os.getenv("MAIL_PASS")
 context = ssl.create_default_context()
 try:
