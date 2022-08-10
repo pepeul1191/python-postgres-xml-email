@@ -57,6 +57,9 @@ Dump de la base de datos usando Postgres Client 14
 
 Hay que instalar python3, python3-pip, Postgres Client 14.
 
+    $ apt-get update
+    $ apt-get install git python3-pip python3-virtualenv python3-venv tree htop nano
+
 ---
 
 Fuentes:
@@ -73,3 +76,5 @@ Fuentes:
 + https://stackoverflow.com/questions/40216311/reading-in-environment-variables-from-an-environment-file
 + https://stackoverflow.com/questions/3362600/how-to-send-email-attachments
 + https://stackoverflow.com/questions/29648309/pg-dump-postgres-database-from-remote-server-when-port-5432-is-blocked
++ https://stackoverflow.com/questions/21158033/query-from-postgresql-using-python-as-dictionary
++ https://www.postgresqltutorial.com/postgresql-python/connect/

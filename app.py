@@ -1,10 +1,12 @@
 import os
+import sys
 from re import S
 import zipfile
 import random
 import xml.etree.ElementTree as ET
 from datetime import datetime
-from postgres import Postgres
+import psycopg2
+import psycopg2.extras
 from dotenv import load_dotenv
 import smtplib, ssl
 from email.mime.application import MIMEApplication
@@ -32,16 +34,21 @@ while i < 5:
   ids = ids + "," + str(id)
   i = i + 1
 # db
-url="postgres://{user}:{password}@{host}:{port}/{db_name}?sslmode=disable"
-db = Postgres(url=url.format(
+conn = psycopg2.connect(
+  host=os.getenv("DB_HOST"),
+  database=os.getenv("DB_NAME"),
   user=os.getenv("DB_USER"),
   password=os.getenv("DB_PASS"),
-  host=os.getenv("DB_HOST"),
-  port=os.getenv("DB_PORT"),
-  db_name=os.getenv("DB_NAME"),
-))
+  port=os.getenv("DB_PORT")
+)
+cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 query = "SELECT * FROM workers WHERE id IN (" +  ids[1:] + ");"
-workers = db.all(query)
+cur.execute(query)
+rs = cur.fetchall()
+cur.close()
+workers = []
+for row in rs:
+  workers.append(dict(row))
 # folder
 timestamp = int(datetime.timestamp(datetime.now()))
 path = "tmp/" + str(timestamp)
@@ -51,19 +58,19 @@ for worker in workers:
   tree = ET.parse("base.xml")
   root = tree.getroot()
   for child in root:
-    child.attrib["id"] = str(worker.id)
+    child.attrib["id"] = str(worker["id"])
     for tmp in child:
       if (
         tmp.tag == "names" or 
         tmp.tag == "last_names" or 
         tmp.tag == "email"
       ):
-        tmp.text = eval("worker." + tmp.tag)
+        tmp.text = worker[tmp.tag]
       if (
         tmp.tag == "phone"
       ):
-        tmp.attrib["whastapp"] = worker.phone
-  name = str(worker.id) + "_" + (worker.last_names + worker.names).replace(" ", "") + ".xml"
+        tmp.attrib["whastapp"] = worker["phone"]
+  name = str(worker["id"]) + "_" + (worker["last_names"] + worker["names"]).replace(" ", "") + ".xml"
   tree.write(path + "/" + name, encoding="utf8", method="xml")
 # zip
 with zipfile.ZipFile("tmp/" + str(timestamp) + ".zip", "w", zipfile.ZIP_DEFLATED) as zipf:
