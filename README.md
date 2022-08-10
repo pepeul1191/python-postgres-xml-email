@@ -28,3 +28,6 @@ Fuentes:
 + https://docs.python.org/3/library/xml.etree.elementtree.html
 + https://stackoverflow.com/questions/15356641/how-to-write-xml-declaration-using-xml-etree-elementtree
 + https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-in/
++ https://stackoverflow.com/questions/1855095/how-to-create-a-zip-archive-of-a-directory
++ https://stackoverflow.com/questions/40216311/reading-in-environment-variables-from-an-environment-file
++ https://stackoverflow.com/questions/3362600/how-to-send-email-attachments

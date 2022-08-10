@@ -1,9 +1,16 @@
 import os
+from re import S
 import zipfile
 import random
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from postgres import Postgres
+from dotenv import load_dotenv
+import smtplib, ssl
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.utils import formatdate
 
 def zipdir(path, ziph):
   # ziph is zipfile handle
@@ -23,7 +30,7 @@ while i < 5:
   ids = ids + "," + str(id)
   i = i + 1
 # db
-db = Postgres(url="postgres://root:123@127.0.0.1:5432/tickets?sslmode=disable")
+db = Postgres(url="postgres://root:123@127.0.0.1:5433/tickets?sslmode=disable")
 query = "SELECT * FROM workers WHERE id IN (" +  ids[1:] + ");"
 workers = db.all(query)
 # folder
@@ -53,3 +60,39 @@ for worker in workers:
 with zipfile.ZipFile("tmp/" + str(timestamp) + ".zip", "w", zipfile.ZIP_DEFLATED) as zipf:
   zipdir("tmp/" + str(timestamp) + "/", zipf)
 # email
+load_dotenv()
+smtp_server = os.getenv("MAIL_HOST")
+port = os.getenv("PORT")
+sender_email = os.getenv("MAIL_USER")
+send_to = "pepe.valdivia.caballero@gmail.com"
+password = os.getenv("MAIL_PASS")
+context = ssl.create_default_context()
+try:
+  server = smtplib.SMTP(smtp_server,port)
+  server.ehlo() # Can be omitted
+  server.starttls(context=context) # Secure the connection
+  server.ehlo() # Can be omitted
+  server.login(sender_email, password)
+  # Send email here
+  msg = MIMEMultipart()
+  msg['From'] = sender_email
+  msg['To'] = send_to
+  msg['Date'] = formatdate(localtime=True)
+  msg['Subject'] = "XMLs " + str(timestamp)
+  body_mail = '''
+    <h1>correo</h1>
+    hola mundo
+  '''
+  msg.attach(MIMEText(body_mail, 'html'))
+  with open("tmp/" + str(timestamp) + ".zip", "rb") as fil:
+    part = MIMEApplication(
+        fil.read(),
+        Name=str(timestamp) + ".zip"
+    )
+    part['Content-Disposition'] = 'attachment; filename="%s"' % str(timestamp) + ".zip"
+    msg.attach(part)
+  server.sendmail(sender_email, send_to, msg.as_string())
+except Exception as e:
+  print(e)
+finally:
+  server.quit() 
