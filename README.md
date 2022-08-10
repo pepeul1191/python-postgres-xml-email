@@ -45,6 +45,10 @@ Dump de la base de datos usando Postgres Client 14
 
     $ pg_dump -h 127.0.0.1 -p 5433 -Fc -U root tickets > db/tickets.dump
 
+## En Nginx
+
+Hay que instalar python3, python3-pip, Postgres Client 14.
+
 ---
 
 Fuentes:

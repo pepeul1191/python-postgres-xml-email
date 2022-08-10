@@ -11,3 +11,14 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=123
       - POSTGRES_DB=postgres
+  web:
+    image: nginx
+    volumes:
+    - ./templates:/etc/nginx/templates
+    ports:
+    - "90:80"
+    environment:
+    - NGINX_HOST=foobar.com
+    - NGINX_PORT=80
+    depends_on:
+      - "postgres"
