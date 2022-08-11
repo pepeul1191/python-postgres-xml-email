@@ -60,6 +60,16 @@ Hay que instalar python3, python3-pip, Postgres Client 14.
     $ apt-get update
     $ apt-get install git python3-pip python3-virtualenv python3-venv tree htop nano
 
+## Selenium
+
+Instalación del driver:
+
+    $ sudo apt-get install chromium-chromedriver
+
+Driver en Python:
+
+    driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+
 ---
 
 Fuentes:
@@ -80,3 +90,5 @@ Fuentes:
 + https://www.postgresqltutorial.com/postgresql-python/connect/
 + https://github.com/pepeul1191/python-bottle-tuto
 + https://www.w3schools.com/css/css_navbar_vertical.asp
++ https://www.youtube.com/watch?v=0AvX54Rp4sc
++ https://stackoverflow.com/questions/22476112/using-chromedriver-with-selenium-python-ubuntu
