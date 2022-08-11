@@ -38,24 +38,11 @@ li a:hover:not(.active) {
 <body>
 
 <ul>
-  <li><a href="/">Home</a></li>
-  <li><a class="active" href="/form">Formulario</a></li>
 </ul>
 
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-  <h2>Formulario</h2>
-  <h3>Paǵina de prueba</h3>
-  <form method="post" enctype="multipart/form-data" action="form">
-    <div>
-      <label for="file">Seleccione un archivo XML</label>
-      <br>
-      <input type="file" id="file" name="file" multiple>
-    </div>
-    <div>
-      <br>
-      <button>Enviar</button>
-    </div>
-  </form>
+  <h2>XML Cargado con éxito</h2>
+  <a href="/">Home</a>
 </div>
 
 </body>

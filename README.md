@@ -79,3 +79,4 @@ Fuentes:
 + https://stackoverflow.com/questions/21158033/query-from-postgresql-using-python-as-dictionary
 + https://www.postgresqltutorial.com/postgresql-python/connect/
 + https://github.com/pepeul1191/python-bottle-tuto
++ https://www.w3schools.com/css/css_navbar_vertical.asp
