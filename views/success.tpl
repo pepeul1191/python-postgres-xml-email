@@ -37,12 +37,12 @@ li a:hover:not(.active) {
 </head>
 <body>
 
-<ul>
+<ul>  
 </ul>
 
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
   <h2>XML Cargado con éxito</h2>
-  <a href="/">Home</a>
+  <a id="goHome" href="/">Home</a>
 </div>
 
 </body>

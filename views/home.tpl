@@ -37,7 +37,7 @@ li a:hover:not(.active) {
 </head>
 <body>
 
-<ul>
+<ul id="nav">
   <li><a class="active" href="/">Home</a></li>
   <li><a href="/form">Formulario</a></li>
 </ul>

@@ -16,7 +16,7 @@ def form():
 def success():
   upload = request.files.get('file')
   ext = os.path.splitext(upload.filename)
-  timestamp = int(datetime.timestamp(datetime.now()))
+  timestamp = datetime.timestamp(datetime.now())*10000
   if ext[1] not in ('.xml'):
     return 'Debe de seleccionar un XML'
   file_path = "{path}/{file}".format(path='tmp/uploads', file=str(timestamp) + ext[1])

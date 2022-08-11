@@ -92,3 +92,4 @@ Fuentes:
 + https://www.w3schools.com/css/css_navbar_vertical.asp
 + https://www.youtube.com/watch?v=0AvX54Rp4sc
 + https://stackoverflow.com/questions/22476112/using-chromedriver-with-selenium-python-ubuntu
++ https://stackoverflow.com/questions/8665072/how-to-upload-file-picture-with-selenium-python
