@@ -78,3 +78,4 @@ Fuentes:
 + https://stackoverflow.com/questions/29648309/pg-dump-postgres-database-from-remote-server-when-port-5432-is-blocked
 + https://stackoverflow.com/questions/21158033/query-from-postgresql-using-python-as-dictionary
 + https://www.postgresqltutorial.com/postgresql-python/connect/
++ https://github.com/pepeul1191/python-bottle-tuto
