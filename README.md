@@ -95,4 +95,5 @@ Fuentes:
 + https://stackoverflow.com/questions/8665072/how-to-upload-file-picture-with-selenium-python
 + https://www.liquid-technologies.com/online-xml-to-xsd-converter
 + https://stackoverflow.com/questions/299588/validating-with-an-xml-schema-in-python
-
++ https://github.com/pepeul1191/python-accesos-v2
++ https://stackoverflow.com/questions/29355674/how-to-connect-mysql-database-using-pythonsqlalchemy-remotely
