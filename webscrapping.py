@@ -33,14 +33,14 @@ driver.set_window_position(50,0)
 time.sleep(1)
 driver.get('http://localhost:8080')
 # get files
-dir_list = os.listdir(os.getcwd()+"/tmp/1660172045")
+dir_list = os.listdir(os.getcwd()+"/tmp/1660192452")
 for file in dir_list:
   ul = driver.find_element(By.ID, 'nav')
   # /home [GET]
   lis = ul.find_elements(By.TAG_NAME, 'li')
   lis[1].click()
   # /form [GET]
-  file_dir = os.getcwd()+"/tmp/1660172045/"+file
+  file_dir = os.getcwd()+"/tmp/1660192452/"+file
   WebDriverWait(driver, 5)\
     .until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input#file')))\
     .send_keys(file_dir)

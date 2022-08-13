@@ -2,3 +2,4 @@ postgres
 python-dotenv
 bottle
 selenium
+lxml

@@ -93,3 +93,6 @@ Fuentes:
 + https://www.youtube.com/watch?v=0AvX54Rp4sc
 + https://stackoverflow.com/questions/22476112/using-chromedriver-with-selenium-python-ubuntu
 + https://stackoverflow.com/questions/8665072/how-to-upload-file-picture-with-selenium-python
++ https://www.liquid-technologies.com/online-xml-to-xsd-converter
++ https://stackoverflow.com/questions/299588/validating-with-an-xml-schema-in-python
+
